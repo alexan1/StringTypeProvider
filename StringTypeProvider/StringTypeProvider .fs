@@ -34,15 +34,17 @@ type StringTypeProvider(config: TypeProviderConfig) as this =
         )
     )
 
-    let ctor = ProvidedConstructor(
-        [], invokeCode = fun args -> <@@ "value" :> obj @@>)
+    let ctor = ProvidedConstructor([], invokeCode = fun args -> <@@ "value" :> obj @@>)
 
-    //ctor.AddXmlDoc "Initialise the awesomes"
-    //ctor.AddXmlDocDelayed (fun () -> "Initializes a the awesomes")
+    //t.AddXmlDoc "Initialise the awesomes"
+    //t.AddXmlDocDelayed (fun () -> "Initializes a the awesomes")
     //ctor.AddXmlDocComputed (fun () -> "Initializes a the awesomes")
     //ty.AddMember ctor
 
     //let ctor = ProvidedConstructor([], invokeCode = fun args -> <@@ "My internal state" :> obj @@>)
+
+    let lengthProp = ProvidedProperty("Length", typeof<int>, getterCode = fun args -> <@@ "value.Length" @@>)
+    t.AddMember lengthProp
 
    
 
